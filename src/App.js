@@ -34,6 +34,9 @@ function App() {
       );
     }
   };
+  const onClear = () => {
+    clearCartItems();
+  }
   return (
     <div className="App">
       <Header countCartItems={cartItems.length}></Header>
@@ -43,6 +46,7 @@ function App() {
           cartItems={cartItems}
           onAdd={onAdd}
           onRemove={onRemove}
+          onClear={onClear}
         ></Basket>
       </div>
     </div>

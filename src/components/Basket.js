@@ -1,7 +1,8 @@
 import React from 'react';
+import useStorage from '../hooks/storage';
 
 export default function Basket(props) {
-  const { cartItems, onAdd, onRemove } = props;
+  const { cartItems, onAdd, onRemove, onClear } = props;
   const itemsPrice = cartItems.reduce((a, c) => a + c.qty * c.price, 0);
   const taxPrice = itemsPrice * 0.14;
   const shippingPrice = itemsPrice > 2000 ? 0 : 20;
@@ -60,7 +61,10 @@ export default function Basket(props) {
               <hr />
             </div>
             <div className="row">
-              <button onClick={() => alert('Implement Checkout!')}>
+              <button onClick={() => {
+                onClear();
+                alert('Implement Checkout!')
+              }}>
                 Checkout
               </button>
             </div>
